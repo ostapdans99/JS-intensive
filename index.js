@@ -53,31 +53,33 @@ function task2 () {
 function deepCopy(obj){
     let newObj = {}
     for(let key in obj){
-        (typeof obj[key] !== 'object') 
+        if(obj.hasOwnProperty(key)){
+            (typeof obj[key] !== 'object') 
             ? newObj[key] = obj[key] 
             : newObj[key] = deepCopy(obj[key])
+        }
     }
     return newObj;
     }
 
 // ========== Test 
 
-// let person1 = {
-//     name: 'Evgenii', 
-//     answers:{
-//             mostLiked: 'Footbal',
-//             notLiked: 'Cleaning',
-//         },
-//     age: 18
-// }
+let person1 = {
+    name: 'Evgenii', 
+    answers:{
+            mostLiked: 'Footbal',
+            notLiked: 'Cleaning',
+        },
+    age: 18
+}
 
-// let person2 = deepCopy(person1)
+let person2 = deepCopy(person1)
 
-// person2.name = 'Andrei'
-// person2.answers.notLiked = 'Swimming'
+person2.name = 'Andrei'
+person2.answers.notLiked = 'Swimming'
 
-// console.log('Person1:', person1)
-// console.log('Person2 :', person2)
+console.log('Person1:', person1)
+console.log('Person2 :', person2)
 
 // ========== Test ends
 
